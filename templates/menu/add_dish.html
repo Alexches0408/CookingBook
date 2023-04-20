@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить блюдо</title>
+</head>
+<body>
+<h1>Добавить блюдо в кулинарную книгу</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.name }}
+    <select name="product" multiple>
+    {% for product in form.products %}
+    <option value="{{ product.id }}">{{ product }}</option>
+    {{ product__amount }}
+    {% endfor %}
+    </select>
+        <!-- Теперь нам нужна только готовая форма и кнопка -->
+    <input type="submit" value="Создать блюдо">
+</form>
+</body>
+</html>

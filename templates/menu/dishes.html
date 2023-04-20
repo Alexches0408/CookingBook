@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список продуктов</title>
+</head>
+<body>
+    {% for dish in dishes %}
+    {{ dish }}
+    {% for product in dish.products.all %}
+    {{ product }}
+    {% endfor %}
+    {% endfor %}
+</body>
+</html>
