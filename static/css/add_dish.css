@@ -1,0 +1,7 @@
+#product_list li {
+    z-index: 2;
+}
+
+#product_list {
+    z-index: 1;
+}
