@@ -18,17 +18,20 @@
     </div>
 
     <div>
-        <ul id="products_list" hidden="true">
+        <ul id="products_list">
          {% for product in form.list_products %}
-         <li>{{ product }}</li>
+         <li id = {{ product }} hidden>{{ product }}</li>
          {% endfor %} 
          </ul>
     </div>
-    <div>{{ form.products }}</div>
+    <div hidden>{{ form.products }}</div>
     <div>{{ form.number_of_person }}</div>
     <div>{{ form.steps }}</div> 
     <input type="submit" value="Создать блюдо">
 </form>
-<script src="{% static 'js/add_dish.js' %}"></script>
+<div id = 'product_display'>
+
+</div>
+<script src="{% static 'js/test_add_dish.js' %}"></script>
 </body>
 </html>

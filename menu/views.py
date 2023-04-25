@@ -18,20 +18,9 @@ class CreateDish(CreateView):
     def post(self, request, *args, **kwargs):
         # берём значения для нового товара из POST-запроса отправленного на сервер
         form = self.form_class(request.POST) # создаём новую форму, забиваем в неё данные из POST-запроса 
-        products= request.POST['products']
-        amount = request.POST['amount']
-        name = request.POST['name']
-        prodamount = dict(zip(products,amount))
+
  
         if form.is_valid(): # если пользователь ввёл всё правильно и нигде не накосячил, то сохраняем новый товар
             form.save()
-        
-        PrDishes = ProductDishe.objects.filter(dishe_id=Dishe.objects.get(name = name).id)
-
-        for key, value in prodamount:
-            item = PrDishes.objects.get(product_id = key)
-            item.amount = value
-            item.save()
-
  
         return super().get(request, *args, **kwargs)
