@@ -1,10 +1,16 @@
 const search = document.getElementById('addproduct')
 
 
+
+
+
 // Когда начинаем вводить значения
 search.addEventListener('keyup', (e) => {
-    if (e.key != 'Enter'){ 
-    matchListProduct(e.target.value); 
+    if (e.key !== 'Enter'){ 
+        matchListProduct(e.target.value); 
+    if (e.target.value === ""){
+        hidProduct();
+    }
     }
 });
 
@@ -58,6 +64,7 @@ function createProduct(value){
     last_elem.textContent = 'X';
     last_elem.addEventListener('click', (e) => {
         deleteProductEvent(e);
+        hidProduct();
     });
     elem.appendChild(first_elem);
     elem.appendChild(last_elem);
@@ -73,8 +80,12 @@ function listProductsEvent() {
             createProduct(e.target.textContent);
             search.value = '';
             elem.remove();
-
+            hidProduct();
+        });
+        elem.addEventListener('down', (e) => {
+            moveDown(e.target, "li")
         })
+
     }
 };
 
@@ -88,6 +99,7 @@ function deleteProductEvent(btn){
         createProduct(e.target.textContent);
         search.value = '';
         e.target.remove();
+        hidProduct();
     })
     markProduct(prevElem.textContent, false)
     document.getElementById('products_list').appendChild(elem)
@@ -96,4 +108,14 @@ function deleteProductEvent(btn){
 
 
 listProductsEvent()
+
+search.oninput = hidProduct()
+
+function hidProduct() {
+    if (search.value === ""){
+        for (i = 0, n = document.getElementById('products_list').children.length; i < n; i++){
+            document.getElementById('products_list').children[i].hidden = true;
+        }
+    }
+}
 

@@ -1,7 +1,40 @@
-#product_list li {
+.content{
+    display: flex;
+    flex-direction: row;
+}
+
+.form{
+    width: 40%;
+}
+
+#products_list {
+    width: 29%;
+    margin-left: 0;
+    padding-left: 0;
+    z-index: 1;
+}
+
+#products_list>li {
+    list-style-type: none;
+    cursor: pointer;
     z-index: 2;
 }
 
-#product_list {
-    z-index: 1;
+#product_display{
+    display: flex;
+    flex-direction: column;
 }
+
+.block_product{
+    display: flex;
+}
+
+.name_product{
+    padding-right: 10px;
+}
+
+.delete_product{
+    color: red;
+    cursor: pointer;
+}
+

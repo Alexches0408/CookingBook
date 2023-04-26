@@ -9,29 +9,35 @@
 </head>
 <body>
 <h1>Добавить блюдо в кулинарную книгу</h1>
-<form method="POST">
-    {% csrf_token %}
-    <label for=""></label>
-    <div>{{ form.name }}</div>
-    <div>
-        <input type="text" id="addproduct" placeholder="Введите название продукта">
-    </div>
+<div class="content">
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            <label for=""></label>
+            <div>{{ form.name }}</div>
+            <div>
+                <input type="text" id="addproduct" placeholder="Введите название продукта">
+            </div>
 
-    <div>
-        <ul id="products_list">
-         {% for product in form.list_products %}
-         <li id = {{ product }} hidden>{{ product }}</li>
-         {% endfor %} 
-         </ul>
+            <div>
+                <ul id="products_list">
+                {% for product in form.list_products %}
+                <li id = {{ product }} hidden>{{ product }}</li>
+                {% endfor %} 
+                </ul>
+            </div>
+            <div hidden>{{ form.products }}</div>
+            <div>{{ form.number_of_person }}</div>
+            <div>{{ form.steps }}</div> 
+            <input type="submit" value="Создать блюдо">
+        </form>
     </div>
-    <div hidden>{{ form.products }}</div>
-    <div>{{ form.number_of_person }}</div>
-    <div>{{ form.steps }}</div> 
-    <input type="submit" value="Создать блюдо">
-</form>
-<div id = 'product_display'>
+    <div id = 'product_display'>
+        <h2>Выбранные продукты</h2>
 
+    </div>
 </div>
-<script src="{% static 'js/test_add_dish.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/test_add_dish.js' %}"></script>
 </body>
 </html>
